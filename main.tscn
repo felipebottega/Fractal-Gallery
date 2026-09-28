@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://brbn32rihaqbm"]
+
+[ext_resource type="Script" uid="uid://bq4foi6ydwdnw" path="res://main.gd" id="1_main"]
+[ext_resource type="Script" uid="uid://u4wp437fsk7t" path="res://general/player.gd" id="2_player"]
+[ext_resource type="Texture2D" uid="uid://7bgekbc0ct0u" path="res://icon.svg" id="3_icon"]
+[ext_resource type="Shader" uid="uid://ddb25nec4fgyp" path="res://general/player_sphere.gdshader" id="4_sphere"]
+[ext_resource type="Shader" uid="uid://du13jcqh37lqi" path="res://general/pixelate_transition.gdshader" id="5_pixelate"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sphere"]
+shader = ExtResource("4_sphere")
+shader_parameter/light_color = Color(0.72, 0.88, 1, 1)
+shader_parameter/specular_strength = 0.38
+shader_parameter/edge_darkening = 0.42
+
+[sub_resource type="CapsuleShape2D" id="Capsule_player"]
+radius = 31.0
+height = 82.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pixelate"]
+shader = ExtResource("5_pixelate")
+shader_parameter/pixel_size = 1.0
+
+[node name="FractalGallery" type="Node2D" unique_id=1059875455]
+script = ExtResource("1_main")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1637911570]
+z_index = 1
+position = Vector2(260, 375)
+script = ExtResource("2_player")
+speed = 600.0
+
+[node name="Shadow" type="Polygon2D" parent="Player" unique_id=1937142477]
+position = Vector2(0, 234)
+color = Color(0.05, 0.06, 0.07, 0.24)
+polygon = PackedVector2Array(-36, 0, -33, -4, -25, -7, -13, -9, 0, -10, 13, -9, 25, -7, 33, -4, 36, 0, 33, 4, 25, 7, 13, 9, 0, 10, -13, 9, -25, 7, -33, 4)
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=794529135]
+material = SubResource("ShaderMaterial_sphere")
+position = Vector2(0, -1)
+scale = Vector2(0.43, 0.43)
+texture = ExtResource("3_icon")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=884786776]
+shape = SubResource("Capsule_player")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1834145005]
+position = Vector2(300, -195)
+limit_left = 0
+limit_top = 0
+limit_right = 5920
+limit_bottom = 720
+position_smoothing_enabled = true
+position_smoothing_speed = 16.0
+
+[node name="Interface" type="CanvasLayer" parent="." unique_id=1094512797]
+
+[node name="Exit" type="Button" parent="Interface" unique_id=1853481462]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -116.0
+offset_top = -71.0
+offset_right = -25.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Exit"
+
+[node name="Header" type="ColorRect" parent="Interface" unique_id=231191398]
+offset_left = 21.0
+offset_top = 636.0
+offset_right = 933.0
+offset_bottom = 713.0
+color = Color(0.07, 0.075, 0.085, 0.88)
+
+[node name="Title" type="Label" parent="Interface/Header" unique_id=232692296]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 400.0
+offset_bottom = 28.0
+theme_override_colors/font_color = Color(0.95, 0.91, 0.82, 1)
+theme_override_font_sizes/font_size = 20
+text = "FRACTAL GALLERY"
+
+[node name="Hint" type="Label" parent="Interface/Header" unique_id=576023871]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 31.0
+offset_right = 894.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.77, 1)
+theme_override_font_sizes/font_size = 13
+text = "A / D or arrow keys: move                               MOUSE SCROLL: zoom-in / zoom-out                               TIP: click on the slider once and use the
+SPACE: jump into the artworks                      HOLD MOUSE LEFT BUTTON: shift position                            arrow keys to slightly change the values"
+
+[node name="PixelTransition" type="CanvasLayer" parent="." unique_id=568243477]
+layer = 100
+
+[node name="PixelateOverlay" type="ColorRect" parent="PixelTransition" unique_id=368744563]
+visible = false
+material = SubResource("ShaderMaterial_pixelate")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="pressed" from="Interface/Exit" to="." method="_on_exit_pressed"]

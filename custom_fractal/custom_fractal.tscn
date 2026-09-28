@@ -1,0 +1,321 @@
+[gd_scene format=3 uid="uid://c6iucyo24h5ma"]
+
+[ext_resource type="Script" uid="uid://dmhgepc3wxuwm" path="res://custom_fractal/custom_fractal.gd" id="1_script"]
+[ext_resource type="Shader" uid="uid://ch6unigike8vv" path="res://custom_fractal/custom_fractal.gdshader" id="2_shader"]
+[ext_resource type="Theme" path="res://general/help_tooltip_theme.tres" id="3_help"]
+[ext_resource type="PackedScene" path="res://general/complex_coordinate_label.tscn" id="4_coordinate"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_custom"]
+shader = ExtResource("2_shader")
+shader_parameter/zoom = 2.0
+shader_parameter/center = Vector2(0, 0)
+shader_parameter/max_iter = 500
+shader_parameter/colors = 0.5
+shader_parameter/a_1 = 0.0
+shader_parameter/a_2 = 1.0
+shader_parameter/a_3 = 0.0
+shader_parameter/a_4 = 0.0
+shader_parameter/a_5 = 0.0
+shader_parameter/a_6 = 0.0
+
+[node name="CustomFractal" type="Node2D" unique_id=872857900]
+script = ExtResource("1_script")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=736739225]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1215081319]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1935344424]
+material = SubResource("ShaderMaterial_custom")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=297845318]
+
+[node name="ComplexCoordinateLabel" parent="CanvasLayer" unique_id=2081584617 instance=ExtResource("4_coordinate")]
+
+[node name="Colors" type="Label" parent="CanvasLayer" unique_id=611792822]
+offset_left = 1141.0
+offset_right = 1219.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Colors"
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/Colors" unique_id=97581789]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 46.0
+offset_bottom = 115.0
+max_value = 1.0
+step = 0.01
+value = 0.5
+
+[node name="MaxIter" type="Label" parent="CanvasLayer" unique_id=1505916938]
+offset_left = 1032.0
+offset_right = 1128.0
+offset_bottom = 34.0
+theme_override_font_sizes/font_size = 24
+text = "Max Iter"
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/MaxIter" unique_id=1739821484]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 30.0
+offset_top = 35.0
+offset_right = 46.0
+offset_bottom = 115.0
+min_value = 10.0
+max_value = 10000.0
+value = 500.0
+exp_edit = true
+
+[node name="Value" type="Label" parent="CanvasLayer/MaxIter" unique_id=502153530]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 120.0
+offset_right = 113.0
+offset_bottom = 154.0
+theme_override_font_sizes/font_size = 24
+text = "500"
+
+[node name="A1" type="Label" parent="CanvasLayer" unique_id=919323859]
+offset_left = 1025.0
+offset_top = 172.0
+offset_right = 1121.0
+offset_bottom = 206.0
+theme_override_font_sizes/font_size = 24
+text = "a1"
+horizontal_alignment = 1
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/A1" unique_id=1649828314]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 35.0
+offset_right = 56.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A1" unique_id=479786928]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 110.0
+offset_right = 88.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A2" type="Label" parent="CanvasLayer" unique_id=1417795068]
+offset_left = 1134.0
+offset_top = 172.0
+offset_right = 1212.0
+offset_bottom = 206.0
+theme_override_font_sizes/font_size = 24
+text = "a2"
+horizontal_alignment = 1
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/A2" unique_id=2116971448]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 35.0
+offset_right = 47.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Value" type="Label" parent="CanvasLayer/A2" unique_id=120193399]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 78.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 20
+text = "1.00"
+horizontal_alignment = 1
+
+[node name="A3" type="Label" parent="CanvasLayer" unique_id=690074557]
+offset_left = 1025.0
+offset_top = 331.0
+offset_right = 1121.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 24
+text = "a3"
+horizontal_alignment = 1
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/A3" unique_id=363556876]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 35.0
+offset_right = 56.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A3" unique_id=2115888962]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 110.0
+offset_right = 88.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A4" type="Label" parent="CanvasLayer" unique_id=2127151525]
+offset_left = 1134.0
+offset_top = 331.0
+offset_right = 1212.0
+offset_bottom = 365.0
+theme_override_font_sizes/font_size = 24
+text = "a4"
+horizontal_alignment = 1
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/A4" unique_id=1932951415]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 35.0
+offset_right = 47.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A4" unique_id=1223467491]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 78.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A5" type="Label" parent="CanvasLayer" unique_id=191249622]
+offset_left = 1025.0
+offset_top = 484.0
+offset_right = 1121.0
+offset_bottom = 518.0
+theme_override_font_sizes/font_size = 24
+text = "a5"
+horizontal_alignment = 1
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/A5" unique_id=1016348738]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 40.0
+offset_top = 35.0
+offset_right = 56.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A5" unique_id=1987091889]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 110.0
+offset_right = 88.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A6" type="Label" parent="CanvasLayer" unique_id=132979263]
+offset_left = 1134.0
+offset_top = 484.0
+offset_right = 1212.0
+offset_bottom = 518.0
+theme_override_font_sizes/font_size = 24
+text = "a6"
+horizontal_alignment = 1
+
+[node name="Slider" type="VSlider" parent="CanvasLayer/A6" unique_id=451193468]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 31.0
+offset_top = 35.0
+offset_right = 47.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A6" unique_id=1645005706]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 78.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="HelpLabel" type="Label" parent="CanvasLayer" unique_id=1064764810]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -106.0
+offset_right = -24.0
+offset_bottom = -58.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Custom polynomial set
+Iterate z(n+1) = a6 z^6 + a5 z^5 + a4 z^4 + a3 z^3 + a2 z^2 + a1 z + c
+from z(0) = 0.
+
+Let d be the highest active degree and a_d its coefficient.
+A point escapes when |z| > R, where R = 2 / |a_d|^(1/(d−1)).
+For a2 = 1, this gives the classic Mandelbrot escape radius R = 2.
+
+Max Iter: raises the iteration cap and reveals finer boundaries.
+Colors: changes the strength and frequency of exterior bands.
+a1-a6: set the real polynomial coefficients from -1 to 1."
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_help")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="CanvasLayer" unique_id=1122064539]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -55.0
+offset_right = -24.0
+offset_bottom = -7.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[connection signal="value_changed" from="CanvasLayer/Colors/Slider" to="." method="_on_colors_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/MaxIter/Slider" to="." method="_on_max_iter_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A1/Slider" to="." method="_on_a_1_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A2/Slider" to="." method="_on_a_2_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A3/Slider" to="." method="_on_a_3_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A4/Slider" to="." method="_on_a_4_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A5/Slider" to="." method="_on_a_5_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A6/Slider" to="." method="_on_a_6_value_changed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]

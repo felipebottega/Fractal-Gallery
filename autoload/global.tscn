@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://iw0anf2vegt2"]
+
+[ext_resource type="Script" uid="uid://biggff0v2umsf" path="res://autoload/global.gd" id="1_5fuoe"]
+[ext_resource type="AudioStream" uid="uid://bccq8kv77nbwx" path="res://music/Beethoven - Rondo op. 51 nr 2 - Trudelies Leonhardt .mp3" id="1_bnpfy"]
+[ext_resource type="Texture2D" uid="uid://bcpey8xk4vn77" path="res://music/sound.png" id="2_5fuoe"]
+
+[node name="Global" type="CanvasLayer" unique_id=1715187599]
+script = ExtResource("1_5fuoe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1377777973]
+stream = ExtResource("1_bnpfy")
+volume_db = -10.0
+autoplay = true
+bus = &"New Bus"
+playback_type = 1
+parameters/looping = true
+
+[node name="Button" type="Button" parent="." unique_id=817646883]
+offset_left = 1084.0
+offset_top = 658.0
+offset_right = 1125.0
+offset_bottom = 695.0
+icon = ExtResource("2_5fuoe")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

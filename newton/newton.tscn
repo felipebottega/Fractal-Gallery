@@ -1,0 +1,331 @@
+[gd_scene format=3 uid="uid://drxsngc8xe0j7"]
+
+[ext_resource type="Script" uid="uid://d0obp2vvxpphg" path="res://newton/newton.gd" id="1_script"]
+[ext_resource type="Shader" uid="uid://bna3uqx4u627p" path="res://newton/newton.gdshader" id="2_shader"]
+[ext_resource type="Theme" path="res://general/help_tooltip_theme.tres" id="3_help"]
+[ext_resource type="PackedScene" path="res://general/complex_coordinate_label.tscn" id="4_coordinate"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fractal"]
+shader = ExtResource("2_shader")
+shader_parameter/zoom = 1.45
+shader_parameter/center = Vector2(0, 0)
+shader_parameter/max_iter = 80
+shader_parameter/precision = 9.0
+shader_parameter/a_0 = -1.0
+shader_parameter/a_1 = 0.0
+shader_parameter/a_2 = 0.0
+shader_parameter/a_3 = 1.0
+shader_parameter/a_4 = 0.0
+shader_parameter/a_5 = 0.0
+shader_parameter/a_6 = 0.0
+
+[node name="Newton" type="Node2D" unique_id=196052827]
+script = ExtResource("1_script")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=2063088627]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1028905794]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1972132263]
+material = SubResource("ShaderMaterial_fractal")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=437187974]
+
+[node name="ComplexCoordinateLabel" parent="CanvasLayer" unique_id=2065741948 instance=ExtResource("4_coordinate")]
+
+[node name="Precision" type="Label" parent="CanvasLayer" unique_id=1008204284]
+offset_left = 990.0
+offset_top = 3.0
+offset_right = 1120.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 22
+text = "Precision"
+horizontal_alignment = 1
+
+[node name="PrecisionSlider" type="VSlider" parent="CanvasLayer/Precision" unique_id=1713005143]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = 3.0
+max_value = 12.0
+step = 0.1
+value = 9.0
+
+[node name="Value" type="Label" parent="CanvasLayer/Precision" unique_id=984913759]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "9.0"
+horizontal_alignment = 1
+
+[node name="A0" type="Label" parent="CanvasLayer" unique_id=761744116]
+offset_left = 1135.0
+offset_top = 3.0
+offset_right = 1265.0
+offset_bottom = 37.0
+theme_override_font_sizes/font_size = 22
+text = "a0"
+horizontal_alignment = 1
+
+[node name="A0Slider" type="VSlider" parent="CanvasLayer/A0" unique_id=757829532]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = -1.0
+
+[node name="Value" type="Label" parent="CanvasLayer/A0" unique_id=1156598720]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "-1.00"
+horizontal_alignment = 1
+
+[node name="A1" type="Label" parent="CanvasLayer" unique_id=502519321]
+offset_left = 990.0
+offset_top = 157.0
+offset_right = 1120.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 22
+text = "a1"
+horizontal_alignment = 1
+
+[node name="A1Slider" type="VSlider" parent="CanvasLayer/A1" unique_id=1543682027]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A1" unique_id=2038986235]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A2" type="Label" parent="CanvasLayer" unique_id=1778995763]
+offset_left = 1135.0
+offset_top = 157.0
+offset_right = 1265.0
+offset_bottom = 191.0
+theme_override_font_sizes/font_size = 22
+text = "a2"
+horizontal_alignment = 1
+
+[node name="A2Slider" type="VSlider" parent="CanvasLayer/A2" unique_id=2107082648]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A2" unique_id=530394237]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A3" type="Label" parent="CanvasLayer" unique_id=302416817]
+offset_left = 990.0
+offset_top = 308.0
+offset_right = 1120.0
+offset_bottom = 342.0
+theme_override_font_sizes/font_size = 22
+text = "a3"
+horizontal_alignment = 1
+
+[node name="A3Slider" type="VSlider" parent="CanvasLayer/A3" unique_id=1308453605]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = 1.0
+
+[node name="Value" type="Label" parent="CanvasLayer/A3" unique_id=79741939]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "1.00"
+horizontal_alignment = 1
+
+[node name="A4" type="Label" parent="CanvasLayer" unique_id=1477073898]
+offset_left = 1135.0
+offset_top = 308.0
+offset_right = 1265.0
+offset_bottom = 342.0
+theme_override_font_sizes/font_size = 22
+text = "a4"
+horizontal_alignment = 1
+
+[node name="A4Slider" type="VSlider" parent="CanvasLayer/A4" unique_id=1411953402]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A4" unique_id=482425511]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A5" type="Label" parent="CanvasLayer" unique_id=448402198]
+offset_left = 990.0
+offset_top = 462.0
+offset_right = 1120.0
+offset_bottom = 496.0
+theme_override_font_sizes/font_size = 22
+text = "a5"
+horizontal_alignment = 1
+
+[node name="A5Slider" type="VSlider" parent="CanvasLayer/A5" unique_id=2130686561]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A5" unique_id=433259150]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="A6" type="Label" parent="CanvasLayer" unique_id=1008008786]
+offset_left = 1135.0
+offset_top = 462.0
+offset_right = 1265.0
+offset_bottom = 496.0
+theme_override_font_sizes/font_size = 22
+text = "a6"
+horizontal_alignment = 1
+
+[node name="A6Slider" type="VSlider" parent="CanvasLayer/A6" unique_id=707308180]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 105.0
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+
+[node name="Value" type="Label" parent="CanvasLayer/A6" unique_id=761417253]
+layout_mode = 0
+offset_top = 109.0
+offset_right = 130.0
+offset_bottom = 139.0
+theme_override_font_sizes/font_size = 20
+text = "0.00"
+horizontal_alignment = 1
+
+[node name="HelpLabel" type="Label" parent="CanvasLayer" unique_id=1604630307]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -117.0
+offset_right = -24.0
+offset_bottom = -69.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Newton fractal
+Newton's method solves f(z) = 0 using
+z(n+1) = z(n) - f(z(n)) / f'(z(n)).
+Here f(z) = a6 z^6 + a5 z^5 + a4 z^4 + a3 z^3 + a2 z^2 + a1 z + a0,
+where each color is a root's basin.
+
+Precision: tightens convergence, slow regions become darker.
+a0-a6: set the real polynomial coefficients from -1 to 1.
+The default a3 = 1 and a0 = -1 gives z^3 - 1."
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_help")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="CanvasLayer" unique_id=1337527509]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -61.0
+offset_right = -24.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[connection signal="value_changed" from="CanvasLayer/Precision/PrecisionSlider" to="." method="_on_precision_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A0/A0Slider" to="." method="_on_a_0_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A1/A1Slider" to="." method="_on_a_1_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A2/A2Slider" to="." method="_on_a_2_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A3/A3Slider" to="." method="_on_a_3_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A4/A4Slider" to="." method="_on_a_4_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A5/A5Slider" to="." method="_on_a_5_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/A6/A6Slider" to="." method="_on_a_6_value_changed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]

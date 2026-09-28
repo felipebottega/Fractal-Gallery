@@ -1,0 +1,140 @@
+[gd_scene format=3 uid="uid://scog6adtgps0"]
+
+[ext_resource type="Script" uid="uid://oqasag8amgsl" path="res://burning_ship/burning_ship.gd" id="1_script"]
+[ext_resource type="Shader" uid="uid://cojaghgtlffpj" path="res://burning_ship/burning_ship.gdshader" id="2_shader"]
+[ext_resource type="Theme" path="res://general/help_tooltip_theme.tres" id="3_help"]
+[ext_resource type="PackedScene" path="res://general/complex_coordinate_label.tscn" id="4_coordinate"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fractal"]
+shader = ExtResource("2_shader")
+shader_parameter/zoom = 1.45
+shader_parameter/center = Vector2(-0.5, -0.55)
+shader_parameter/max_iter = 350
+shader_parameter/heat = 0.7
+
+[node name="BurningShip" type="Node2D" unique_id=2035106069]
+script = ExtResource("1_script")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=1997107539]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=1525852430]
+handle_input_locally = false
+render_target_update_mode = 4
+
+[node name="ColorRect" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1142426110]
+material = SubResource("ShaderMaterial_fractal")
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1837216608]
+
+[node name="ComplexCoordinateLabel" parent="CanvasLayer" unique_id=1527398248 instance=ExtResource("4_coordinate")]
+
+[node name="MaxIter" type="Label" parent="CanvasLayer" unique_id=506933238]
+offset_left = 990.0
+offset_top = 28.0
+offset_right = 1120.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 22
+text = "Max Iter"
+horizontal_alignment = 1
+
+[node name="MaxIterSlider" type="VSlider" parent="CanvasLayer/MaxIter" unique_id=1935265411]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 155.0
+min_value = 50.0
+max_value = 1200.0
+step = 10.0
+value = 350.0
+exp_edit = true
+
+[node name="Value" type="Label" parent="CanvasLayer/MaxIter" unique_id=1911707931]
+layout_mode = 0
+offset_top = 159.0
+offset_right = 130.0
+offset_bottom = 193.0
+theme_override_font_sizes/font_size = 22
+text = "350"
+horizontal_alignment = 1
+
+[node name="Heat" type="Label" parent="CanvasLayer" unique_id=1406782637]
+offset_left = 1135.0
+offset_top = 28.0
+offset_right = 1265.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 22
+text = "Heat"
+horizontal_alignment = 1
+
+[node name="HeatSlider" type="VSlider" parent="CanvasLayer/Heat" unique_id=505780301]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 0
+offset_left = 57.0
+offset_top = 35.0
+offset_right = 73.0
+offset_bottom = 155.0
+max_value = 1.0
+step = 0.01
+value = 0.7
+
+[node name="Value" type="Label" parent="CanvasLayer/Heat" unique_id=1054658000]
+layout_mode = 0
+offset_top = 159.0
+offset_right = 130.0
+offset_bottom = 193.0
+theme_override_font_sizes/font_size = 22
+text = "0.70"
+horizontal_alignment = 1
+
+[node name="HelpLabel" type="Label" parent="CanvasLayer" unique_id=1582729730]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -128.0
+offset_right = -24.0
+offset_bottom = -80.0
+grow_horizontal = 0
+grow_vertical = 0
+tooltip_text = "Burning Ship fractal
+Iterate z(n+1) = (|Re z(n)| + i|Im z(n)|)^2 + c,
+starting from z(0) = 0. Escaping points form the exterior.
+
+Max Iter: raises the cap and reveals finer boundary detail.
+Heat: increases warmth, brightness, and color-band frequency."
+mouse_filter = 0
+mouse_default_cursor_shape = 2
+theme = ExtResource("3_help")
+theme_override_colors/font_outline_color = Color(0, 0, 0, 0.9)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="CanvasLayer" unique_id=1226732396]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -72.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 28
+text = "Quit"
+
+[connection signal="value_changed" from="CanvasLayer/MaxIter/MaxIterSlider" to="." method="_on_max_iter_value_changed"]
+[connection signal="value_changed" from="CanvasLayer/Heat/HeatSlider" to="." method="_on_heat_value_changed"]
+[connection signal="pressed" from="CanvasLayer/QuitButton" to="." method="_on_quit_button_pressed"]
