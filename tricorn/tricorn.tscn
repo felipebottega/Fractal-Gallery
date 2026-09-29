@@ -42,7 +42,7 @@ text = "Max Iter"
 horizontal_alignment = 1
 
 [node name="MaxIterSlider" type="VSlider" parent="CanvasLayer/MaxIter" unique_id=1935184812]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 57.0
 offset_top = 35.0
@@ -73,7 +73,7 @@ text = "Conjugate"
 horizontal_alignment = 1
 
 [node name="ConjugateSlider" type="VSlider" parent="CanvasLayer/Conjugate" unique_id=1335346964]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 57.0
 offset_top = 35.0

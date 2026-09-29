@@ -46,7 +46,7 @@ theme_override_font_sizes/font_size = 24
 text = "Colors"
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/Colors" unique_id=97581789]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 35.0
@@ -64,7 +64,7 @@ theme_override_font_sizes/font_size = 24
 text = "Max Iter"
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/MaxIter" unique_id=1739821484]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 35.0
@@ -94,7 +94,7 @@ text = "a1"
 horizontal_alignment = 1
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/A1" unique_id=1649828314]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 40.0
 offset_top = 35.0
@@ -124,7 +124,7 @@ text = "a2"
 horizontal_alignment = 1
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/A2" unique_id=2116971448]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 31.0
 offset_top = 35.0
@@ -154,7 +154,7 @@ text = "a3"
 horizontal_alignment = 1
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/A3" unique_id=363556876]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 40.0
 offset_top = 35.0
@@ -184,7 +184,7 @@ text = "a4"
 horizontal_alignment = 1
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/A4" unique_id=1932951415]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 31.0
 offset_top = 35.0
@@ -213,7 +213,7 @@ text = "a5"
 horizontal_alignment = 1
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/A5" unique_id=1016348738]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 40.0
 offset_top = 35.0
@@ -243,7 +243,7 @@ text = "a6"
 horizontal_alignment = 1
 
 [node name="Slider" type="VSlider" parent="CanvasLayer/A6" unique_id=451193468]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 31.0
 offset_top = 35.0

@@ -42,7 +42,7 @@ text = "Max Iter"
 horizontal_alignment = 1
 
 [node name="MaxIterSlider" type="VSlider" parent="CanvasLayer/MaxIter" unique_id=1805566827]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 57.0
 offset_top = 35.0
@@ -73,7 +73,7 @@ text = "Mirror"
 horizontal_alignment = 1
 
 [node name="MirrorSlider" type="VSlider" parent="CanvasLayer/Mirror" unique_id=2072263259]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 57.0
 offset_top = 35.0

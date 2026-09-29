@@ -82,7 +82,7 @@ theme_override_font_sizes/font_size = 24
 text = "Colors"
 
 [node name="Colors" type="VSlider" parent="CanvasLayer/Colors" unique_id=322434076]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 35.0
@@ -101,7 +101,7 @@ theme_override_font_sizes/font_size = 24
 text = "Max Iter"
 
 [node name="Maxiter" type="VSlider" parent="CanvasLayer/MaxIter" unique_id=300361247]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 30.0
 offset_top = 35.0

@@ -96,6 +96,13 @@ theme_override_font_sizes/font_size = 13
 text = "A / D or arrow keys: move                               MOUSE SCROLL: zoom-in / zoom-out                               TIP: click on the slider once and use the
 SPACE: jump into the artworks                      HOLD MOUSE LEFT BUTTON: shift position                            arrow keys to slightly change the values"
 
+[node name="Version" type="Label" parent="Interface" unique_id=547411134]
+offset_left = 950.0
+offset_top = 697.0
+offset_right = 990.0
+offset_bottom = 720.0
+theme_override_font_sizes/font_size = 12
+
 [node name="PixelTransition" type="CanvasLayer" parent="." unique_id=568243477]
 layer = 100
 

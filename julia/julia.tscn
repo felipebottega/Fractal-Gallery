@@ -43,7 +43,7 @@ text = "C Real"
 horizontal_alignment = 1
 
 [node name="CRealSlider" type="VSlider" parent="CanvasLayer/CReal" unique_id=179610582]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 57.0
 offset_top = 35.0
@@ -73,7 +73,7 @@ text = "C Imag"
 horizontal_alignment = 1
 
 [node name="CImaginarySlider" type="VSlider" parent="CanvasLayer/CImaginary" unique_id=1973971997]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(5.912981, 0, 0, 1)
 layout_mode = 0
 offset_left = 57.0
 offset_top = 35.0

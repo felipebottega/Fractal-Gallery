@@ -58,8 +58,4 @@ void fragment() {
 	uv += center;
 	
 	COLOR = compute_iteration(uv);
-	
-	if (length(uv) < 0.01) {
-		COLOR = vec4(1.0, 0.0, 0.0, 1.0);
-	}
 }

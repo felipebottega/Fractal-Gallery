@@ -13,7 +13,7 @@ const EXHIBITS := [
 	{"title": "TRICORN", "subtitle": "conjugate(z)² + c", "type": 3, "x": 2830.0, "accent": Color("#b79ced"), "zoom": 0.76, "offset": Vector2(-0.25, 0.0), "scene": "res://tricorn/tricorn.tscn"},
 	{"title": "NEWTON", "subtitle": "roots of z³ − 1", "type": 4, "x": 3600.0, "accent": Color("#78e08f"), "zoom": 0.88, "offset": Vector2.ZERO, "scene": "res://newton/newton.tscn"},
 	{"title": "CELTIC", "subtitle": "Celtic Mandelbrot", "type": 5, "x": 4370.0, "accent": Color("#e056fd"), "zoom": 0.7, "offset": Vector2(-0.42, 0.0), "scene": "res://celtic/celtic.tscn"},
-	{"title": "CUSTOM POLYNOMIAL", "subtitle": "a₆z⁶ + ··· + a₁z + c", "type": 0, "x": 5140.0, "accent": Color("#55c1a7"), "zoom": 1.0, "offset": Vector2.ZERO, "scene": "res://custom_fractal/custom_fractal.tscn", "custom": true},
+	{"title": "CUSTOM FRACTAL", "subtitle": "a₆z⁶ + ··· + a₁z + c", "type": 0, "x": 5140.0, "accent": Color("#55c1a7"), "zoom": 1.0, "offset": Vector2.ZERO, "scene": "res://custom_fractal/custom_fractal.tscn", "custom": true},
 ]
 
 var is_transitioning := false
@@ -26,6 +26,8 @@ func _ready() -> void:
 	_build_collisions()
 	_build_exhibit_portals()
 	queue_redraw()
+	
+	$Interface/Version.text = "v" + ProjectSettings.get_setting("application/config/version")
 
 func _build_exhibits() -> void:
 	for data: Dictionary in EXHIBITS:
